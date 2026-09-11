@@ -32,9 +32,10 @@ Edit `public/scripts/news-data.js` and add an object to the top of `DATA` (field
 
 ## Known follow-ups
 
-- Team headshots and news thumbnails still load from the old Webflow CDN
-  (`cdn.prod.website-files.com`). Download them into `public/assets/` and update the
-  references **before cancelling the Webflow subscription**.
+- Nothing on the site depends on Webflow any more: team headshots live in
+  `public/assets/photos/team/` and news thumbnails in `public/assets/photos/news/`
+  (the `CDN` prefix in `news-data.js` now points there, so a new item's `i` is just its
+  filename in that folder). The news thumbnails total ~43 MB and have not been optimised.
 - Chronicle Display webfonts are not yet licensed/installed; Newsreader is the live
   stand-in (Chronicle is first in the font stack, so adding the woff2 files and
   @font-face rules swaps it automatically).
