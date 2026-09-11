@@ -1,5 +1,14 @@
-/* Responsive layer. Page markup is inline-styled, so these rules use
-   attribute selectors on the style attribute and !important to win. */
+/* Shared stylesheet loaded on every page. Page markup is inline-styled, so
+   these rules use attribute selectors on the style attribute and !important to win. */
+
+/* Keyboard focus for inline text links (the mockups carried the style in a style-focus attribute) */
+[style-focus]:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+[style-focus^="background-size"]:focus-visible{background-size:100% 1.5px}
+
+/* Respect "reduce motion": freeze the hero slideshow, its dots and the logo ticker */
+@media (prefers-reduced-motion:reduce){
+  [style*="animation-name:"],[style*="animation:"]{animation-play-state:paused!important}
+}
 
 .ecd-menu-btn{display:none;position:relative;width:44px;height:44px;margin:-6px -8px -6px 0;padding:0;background:none;border:0;cursor:pointer;color:#757575}
 .ecd-menu-btn span{position:absolute;left:11px;width:22px;height:2px;background:currentColor;border-radius:1px;transition:transform .25s ease,opacity .2s ease}
@@ -24,12 +33,15 @@
   [style*="grid-template-columns:repeat(3"],[style*="grid-template-columns:repeat(4"],[style*="grid-template-columns:repeat(5"]:not(.ecd-factors){grid-template-columns:repeat(2,minmax(0,1fr))!important}
   /* About: 194M+ block and lifespan bars stack below 900px */
   [style*="minmax(0,1.02fr) minmax(0,.98fr)"]{grid-template-columns:minmax(0,1fr)!important;gap:40px!important}
+  /* Home: the three pillars and the newsletter photo mosaic stay three-up (two-up orphans the third) */
+  [style*="repeat(3"][style*="column-gap:24px;margin:18px 0 0"],
+  [style*="repeat(3"][style*="column-gap:16px;align-items:start"]{grid-template-columns:repeat(3,minmax(0,1fr))!important}
   /* About: lifespan bars keep their three columns but the bar track may shrink */
   [style*="max-content minmax(200px,1fr) max-content"]{grid-template-columns:max-content minmax(0,1fr) max-content!important}
   [style*="grid-template-columns:repeat(auto-f"]{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
 
   /* Flex rows may wrap */
-  [style*="display:flex"]:not([style*="width:max-content"]){flex-wrap:wrap!important}
+  [style*="display:flex"]:not([style*="width:max-content"]):not([style*="flex-direction:column"]){flex-wrap:wrap!important}
 
   /* Large display numerals */
   [style*="font:400 152px"]{font-size:clamp(88px,24vw,152px)!important}
@@ -99,7 +111,10 @@
 
 @media (max-width:600px){
   /* Every remaining multi-column layout becomes a single column */
-  [style*="grid-template-columns"]:not(.ecd-footgrid):not(.ecd-factors):not(:has(> #ecdTiers)):not([style*="repeat(10"]):not([style*="14px minmax"]):not([style*="minmax(230px,1fr)"]):not([style*="minmax(250px,1fr)"]){grid-template-columns:minmax(0,1fr)!important}
+  [style*="grid-template-columns"]:not(.ecd-footgrid):not(.ecd-factors):not(:has(> #ecdTiers)):not([style*="repeat(10"]):not([style*="14px minmax"]):not([style*="minmax(230px,1fr)"]):not([style*="minmax(250px,1fr)"]):not([style*="column-gap:16px;align-items:start"]){grid-template-columns:minmax(0,1fr)!important}
+  /* Home newsletter mosaic: shorter tiles so three columns fit a phone */
+  [style*="column-gap:16px;align-items:start"] [style*="height:196px"]{height:150px!important}
+  [style*="column-gap:16px;align-items:start"] [style*="height:186px"]{height:142px!important}
   .ecd-factors{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px 16px!important}
 }
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Where End Chronic Disease works</title>
+<style>
+html,body{margin:0;height:100%;background:transparent;overflow:hidden;font-family:'Hanken Grotesk',system-ui,sans-serif}
+#map{width:100%;height:100%;display:flex;align-items:center}
+#map svg{display:block}
+</style>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="map"></div>
+<script>
+// Reach: states with media, advocacy, partnership or other engagement.
+const REACH = ['Idaho','California','Utah','Arizona','Texas','Louisiana','Arkansas','Oklahoma',
+'Kansas','Iowa','Illinois','Indiana','Kentucky','Tennessee','West Virginia','Virginia','Minnesota',
+'Wisconsin','Missouri','Ohio','Pennsylvania','New York','New Jersey','Connecticut','Massachusetts',
+'New Hampshire','Alabama','Maryland','Florida','Colorado'];
+const FEATURED = [];
+
+(async function(){
+  const el = document.getElementById('map');
+  // fixed drawing box with the US aspect ratio; CSS scales it to the container
+  const W = 2000, H = 1240;
+  const svg = d3.select(el).append('svg')
+    .attr('viewBox', '0 0 ' + W + ' ' + H)
+    .attr('width', '100%').attr('height', '100%')
+    .attr('preserveAspectRatio', 'xMidYMid meet');
+  const topo = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-10m.json');
+  const states = topojson.feature(topo, topo.objects.states);
+  const proj = d3.geoAlbersUsa().fitSize([W * 0.96, H * 0.96], states);
+  proj.translate([proj.translate()[0] + W * 0.02, proj.translate()[1] + H * 0.02]);
+  const path = d3.geoPath(proj);
+  const fill = d => REACH.indexOf(d.properties.name) > -1 ? '#A8C3B2' : '#F4F2ED';
+
+  // pencil texture: wobble the stroke geometry, then soften it
+  const defs = svg.append('defs');
+  const f = defs.append('filter').attr('id', 'pencil')
+    .attr('x', '-6%').attr('y', '-6%').attr('width', '112%').attr('height', '112%');
+  f.append('feTurbulence').attr('type', 'fractalNoise')
+    .attr('baseFrequency', '0.022').attr('numOctaves', '4').attr('seed', '7')
+    .attr('result', 'noise');
+  f.append('feDisplacementMap').attr('in', 'SourceGraphic').attr('in2', 'noise')
+    .attr('scale', '1.8').attr('xChannelSelector', 'R').attr('yChannelSelector', 'G');
+
+  svg.append('g').selectAll('path')
+    .data(states.features).join('path')
+    .attr('d', path)
+    .attr('fill', fill)
+    .attr('stroke', 'none');
+
+  const pencil = svg.append('g').attr('filter', 'url(#pencil)');
+  // interior state lines, drawn twice at low opacity for a graphite build-up
+  const inner = topojson.mesh(topo, topo.objects.states, (a, b) => a !== b);
+  pencil.append('path').datum(inner).attr('d', path).attr('fill', 'none')
+    .attr('stroke', '#ffffff').attr('stroke-width', 1.8)
+    .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+    .attr('opacity', 0.95);
+  pencil.append('path').datum(inner).attr('d', path).attr('fill', 'none')
+    .attr('stroke', '#ffffff').attr('stroke-width', 1)
+    .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+    .attr('opacity', 1);
+  // national outline, a touch heavier
+  const outer = topojson.mesh(topo, topo.objects.states, (a, b) => a === b);
+  pencil.append('path').datum(outer).attr('d', path).attr('fill', 'none')
+    .attr('stroke', '#CFCAC2').attr('stroke-width', 1.9)
+    .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+    .attr('opacity', 0.62);
+  pencil.append('path').datum(outer).attr('d', path).attr('fill', 'none')
+    .attr('stroke', '#B8B2AA').attr('stroke-width', 1.1).attr('opacity', 0.8)
+    .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+})();
+</script>
+</body>
+</html>

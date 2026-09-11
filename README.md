@@ -11,6 +11,9 @@ Static site built with [Astro](https://astro.build); deployed automatically via 
 - `src/raw/*.style.css` — per-page styles (fonts, keyframes, footer grid breakpoints)
 - `src/layouts/Base.astro` — shared head: meta, fonts, Google Analytics (G-VWQH92XELT), HubSpot tracking (portal 50818861)
 - `public/assets/` — brand art, photography, pillar marks, Graphik webfonts
+- `public/us-reach-map.html` — the D3 map of states where ECD works, embedded in Our Work as an
+  iframe; edit the `REACH` list there to change which states are shaded
+- `public/assets/og-image.jpg` — the 1200×630 image used when pages are shared on social media
 - `public/scripts/` — page behavior (vanilla JS, no framework):
   - `search.js` — site-wide search dialog (merged index across all pages)
   - `home.js` — hero montage slide/dot sync
