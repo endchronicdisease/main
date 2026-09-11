@@ -3,3 +3,6 @@ dist/
 .astro/
 _to_delete/
 .DS_Store
+
+# Local Claude Code dev-server config
+.claude/

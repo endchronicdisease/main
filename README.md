@@ -38,5 +38,11 @@ Edit `public/scripts/news-data.js` and add an object to the top of `DATA` (field
 - Chronicle Display webfonts are not yet licensed/installed; Newsreader is the live
   stand-in (Chronicle is first in the font stack, so adding the woff2 files and
   @font-face rules swaps it automatically).
-- Pages are desktop-first (1440px design width) per the approved mockups; the footer
-  has responsive breakpoints, but full mobile layouts are a future pass.
+- Pages are desktop-first (1440px design width) per the approved mockups. Phone and
+  tablet layouts come from `src/styles/mobile.css`, one shared stylesheet loaded by
+  `Base.astro`: because the page markup is inline-styled, it targets patterns in the
+  style attribute (`[style*="..."]`) with `!important`, at breakpoints of 900px
+  (hamburger nav, two-column grids) and 600px (single column). The hamburger menu is
+  `public/scripts/nav.js` plus the `.ecd-nav` / `.ecd-nav-links` hooks on each page's
+  header. When adding a new desktop layout pattern, check it at 375px and add a rule
+  there if it does not collapse on its own.

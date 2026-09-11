@@ -1,4 +1,5 @@
 ---
+import mobile from '../styles/mobile.css?raw';
 const { title, description, css = [], scripts = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 // Netlify sets URL to the site's primary address at build time. Until the
@@ -27,6 +28,7 @@ const noindex = !/endchronicdisease\.org/.test(siteUrl);
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&family=Coming+Soon&display=swap" rel="stylesheet" />
 {css.map((c) => <style set:html={c}></style>)}
+<style set:html={mobile}></style>
 <!-- Analytics: Google Analytics 4 and HubSpot tracking.
      Loaded only on the production domain so Netlify previews and local dev
      do not pollute real traffic data. -->
@@ -57,7 +59,22 @@ const noindex = !/endchronicdisease\.org/.test(siteUrl);
 </head>
 <body>
 <slot />
+<div id="ecdSearchOverlay" role="dialog" aria-modal="true" aria-label="Search End Chronic Disease">
+<div style="box-sizing:border-box;max-width:1352px;margin:0 auto;padding:44px 80px 0">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:40px">
+<label for="ecdSearchInput" style="font:400 25px/1.2 'Coming Soon',cursive;color:#6FA4E2">Search</label>
+<button id="ecdSearchClose" type="button" aria-label="Close search" style="font:600 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#757575;background:none;border:none;padding:10px 0;cursor:pointer">Close</button>
+</div>
+<div style="display:flex;align-items:center;gap:14px;margin:22px 0 0;padding:0 0 16px;border-bottom:2px solid #DBD6CE">
+<span style="flex:none;color:#848484"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false" style="display:block"><circle cx="8.5" cy="8.5" r="5.6" fill="none" stroke="currentColor" stroke-width="1.9"></circle><line x1="12.7" y1="12.7" x2="17.4" y2="17.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></line></svg></span>
+<input id="ecdSearchInput" type="search" autocomplete="off" placeholder="Search End Chronic Disease" aria-describedby="ecdSearchCount" style="flex:1;min-width:0;font:400 26px/1.3 'Graphik','Hanken Grotesk',sans-serif;color:#4a4a4a;background:none;border:none;outline:none">
+</div>
+<div id="ecdSearchCount" role="status" aria-live="polite" style="margin:18px 0 0;font:500 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#848484"></div>
+<div id="ecdSearchResults" role="listbox" aria-label="Search results" style="margin:20px 0 0;max-height:calc(100vh - 300px);overflow:auto;padding:0 0 40px"></div>
+</div>
+</div>
 <script src="/scripts/search.js" defer></script>
+<script src="/scripts/nav.js" defer></script>
 {scripts.map((s) => <script src={s} defer></script>)}
 </body>
 </html>
