@@ -1,15 +1,27 @@
 (function () {
+  var opener = null;
+
   function closeAll() {
+    var wasOpen = document.querySelector('[data-ecd-modal]:not([hidden])');
     document.querySelectorAll('[data-ecd-modal]').forEach(function (m) { m.hidden = true; });
     document.body.style.overflow = '';
+    if (wasOpen && opener) opener.focus();
+    opener = null;
   }
+
   document.querySelectorAll('[data-ecd-open]').forEach(function (btn) {
+    btn.setAttribute('aria-haspopup', 'dialog');
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       closeAll();
       var id = btn.getAttribute('data-ecd-open');
       var modal = document.querySelector('[data-ecd-modal="' + id + '"]');
-      if (modal) { modal.hidden = false; document.body.style.overflow = 'hidden'; }
+      if (!modal) return;
+      opener = btn;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      var close = modal.querySelector('button[data-ecd-close]');
+      if (close) close.focus();
     });
   });
   document.querySelectorAll('[data-ecd-close]').forEach(function (el) {

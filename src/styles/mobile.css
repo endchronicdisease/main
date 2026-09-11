@@ -21,7 +21,11 @@
   [style*="width:1192px"],[style*="width:658px"],[style*="width:666px"],[style*="width:760px"],[style*="width:560px"],[style*="width:412px"]{width:auto!important;max-width:100%!important}
 
   /* Multi-column grids collapse: 3-5 columns become 2 */
-  [style*="grid-template-columns:repeat(3"],[style*="grid-template-columns:repeat(4"],[style*="grid-template-columns:repeat(5"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  [style*="grid-template-columns:repeat(3"],[style*="grid-template-columns:repeat(4"],[style*="grid-template-columns:repeat(5"]:not(.ecd-factors){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  /* About: 194M+ block and lifespan bars stack below 900px */
+  [style*="minmax(0,1.02fr) minmax(0,.98fr)"]{grid-template-columns:minmax(0,1fr)!important;gap:40px!important}
+  /* About: lifespan bars keep their three columns but the bar track may shrink */
+  [style*="max-content minmax(200px,1fr) max-content"]{grid-template-columns:max-content minmax(0,1fr) max-content!important}
   [style*="grid-template-columns:repeat(auto-f"]{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))!important}
 
   /* Flex rows may wrap */
@@ -77,6 +81,9 @@
   [style*="padding:78px 78px 44px"]{padding:44px 24px 36px!important}
   [style*="margin:0 0 0 62px"]{margin-left:0!important}
 
+  /* Footer text links: larger touch target without changing the visual spacing */
+  .ecd-footgrid a:not([aria-label]){display:inline-block;padding:7px 0;margin:-7px 0}
+
   /* Search overlay */
   #ecdSearchOverlay > div{padding-top:28px!important}
   #ecdSearchInput{font-size:20px!important}
@@ -94,6 +101,11 @@
   /* Every remaining multi-column layout becomes a single column */
   [style*="grid-template-columns"]:not(.ecd-footgrid):not(.ecd-factors):not(:has(> #ecdTiers)):not([style*="repeat(10"]):not([style*="14px minmax"]):not([style*="minmax(230px,1fr)"]):not([style*="minmax(250px,1fr)"]){grid-template-columns:minmax(0,1fr)!important}
   .ecd-factors{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px 16px!important}
+}
+
+@media (max-width:900px){
+  /* The rightmost paint splotch is scaled 9% wider than its cell; clip that spill at the section edge */
+  [style*="max-width:1352px"]:has(.ecd-factors){overflow-x:clip}
   /* Team portraits and donation tiers stay two-up */
   [style*="minmax(230px,1fr)"],[style*="minmax(250px,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 16px!important}
   [style*="grid-template-columns"]:has(> #ecdTiers){grid-template-columns:repeat(2,minmax(0,1fr))!important}
