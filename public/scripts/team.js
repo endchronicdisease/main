@@ -20,8 +20,9 @@
       opener = btn;
       modal.hidden = false;
       document.body.style.overflow = 'hidden';
-      var close = modal.querySelector('button[data-ecd-close]');
-      if (close) close.focus();
+      modal.tabIndex = -1;
+      modal.style.outline = 'none';
+      modal.focus({ preventScroll: true });
     });
   });
   document.querySelectorAll('[data-ecd-close]').forEach(function (el) {
