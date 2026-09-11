@@ -6,3 +6,6 @@ _to_delete/
 
 # Local Claude Code dev-server config
 .claude/
+
+# Local Netlify folder
+.netlify
