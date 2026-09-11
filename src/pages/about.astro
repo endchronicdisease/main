@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../raw/about.body.html?raw';
+import style from '../raw/about.style.css?raw';
+import extra from '../raw/about.extra.css?raw';
+---
+<Base title='About | End Chronic Disease' description='Chronic disease connects all of us. Learn how End Chronic Disease works to bring prevention into everyday life.' css={[style, extra]} scripts={["/scripts/about.js"]}>
+  <Fragment set:html={body} />
+</Base>

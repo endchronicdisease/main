@@ -1,0 +1,103 @@
+
+
+<div style="box-sizing:border-box;max-width:1352px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px 40px;padding:26px 80px;background:#ffffff">
+<a href="/" style="display:block;text-decoration:none"><img loading="lazy" src="/assets/logo-full-blue.png" alt="End Chronic Disease" style="height:56px;width:auto;display:block"></a>
+<div style="display:flex;flex-wrap:wrap;align-items:center;min-width:0;gap:14px 30px">
+<a href="/about/" style="font:500 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#757575;text-decoration:none">About</a>
+<a href="/our-work/" style="font:500 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#757575;text-decoration:none">Our Work</a>
+<a href="/team/" style="font:500 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#757575;text-decoration:none">Team</a>
+<a href="/news/" style="font:700 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6FA4E2;text-decoration:none">News</a>
+<a href="/get-involved/" style="font:500 12.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#757575;text-decoration:none">Get Involved</a>
+<button id="ecdSearchBtn" type="button" aria-label="Search End Chronic Disease" aria-haspopup="dialog" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin:-10px 0;padding:0;color:#757575;background:none;border:none;cursor:pointer"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" focusable="false" style="display:block"><circle cx="8.5" cy="8.5" r="5.6" fill="none" stroke="currentColor" stroke-width="1.9"></circle><line x1="12.7" y1="12.7" x2="17.4" y2="17.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"></line></svg></button>
+<a href="/donate/" style="font:700 15px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:#6FA4E2;padding:20px 40px;border-radius:8px;text-decoration:none">Donate</a>
+</div>
+</div>
+
+<div style="box-sizing:border-box;max-width:1352px;margin:0 auto;padding:52px 80px 36px;background:#ffffff">
+<div style="max-width:1192px;margin:0 auto">
+<h1 style="margin:0;max-width:1120px;font:700 36px/1.12 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:-.022em;color:#757575;text-wrap:pretty">We bring daily prevention to the national conversation</h1>
+<p style="margin:30px 0 0;max-width:900px;font:400 18.5px/1.7 'Chronicle Display','Newsreader',Georgia,serif;color:#757575;text-wrap:pretty">Through national and local media, op-eds, interviews, testimony, polling, and more, we&rsquo;re helping Americans understand the everyday factors that shape their health and the opportunities for prevention.</p>
+<p style="margin:16px 0 0;max-width:900px;font:400 18.5px/1.7 'Chronicle Display','Newsreader',Georgia,serif;color:#757575;text-wrap:pretty">Explore by topic, type, outlet, or location.</p>
+</div>
+</div>
+
+<div style="padding:0 80px 22px;background:#ffffff">
+<div style="max-width:1192px;margin:0 auto">
+<div style="position:relative;max-width:420px;margin:0 0 26px">
+<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" style="position:absolute;left:15px;top:50%;transform:translateY(-50%);width:17px;height:17px;pointer-events:none"><circle cx="8.5" cy="8.5" r="5.6" fill="none" stroke="#9a9a9a" stroke-width="1.7"></circle><line x1="12.7" y1="12.7" x2="17.2" y2="17.2" stroke="#9a9a9a" stroke-width="1.7" stroke-linecap="round"></line></svg>
+<label for="news-search" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Search news and media</label>
+<input id="news-search" type="search" placeholder="Search news &amp; media" style="display:block;width:100%;box-sizing:border-box;padding:13px 42px 13px 42px;font:400 16px/1.3 'Graphik','Hanken Grotesk',sans-serif;color:#575757;background:#ffffff;border:1px solid #DBD6CE;border-radius:8px;outline:none">
+<span id="ecdNewsClear" style="display:contents"></span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<span id="ecdNewsChips" style="display:contents"></span>
+</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:20px 0 0">
+<select id="ecdNewsType" style="padding:13px 16px;border-radius:8px;border:1.5px solid #DBD6CE;background:#ffffff;font:400 15px/1.2 'Graphik','Hanken Grotesk',sans-serif;color:#757575">
+</select>
+<select id="ecdNewsOutlet" style="padding:13px 16px;border-radius:8px;border:1.5px solid #DBD6CE;background:#ffffff;font:400 15px/1.2 'Graphik','Hanken Grotesk',sans-serif;color:#757575">
+</select>
+<select id="ecdNewsPlace" style="padding:13px 16px;border-radius:8px;border:1.5px solid #DBD6CE;background:#ffffff;font:400 15px/1.2 'Graphik','Hanken Grotesk',sans-serif;color:#757575">
+</select>
+<span id="ecdNewsDirty" style="display:contents"></span>
+</div>
+<div id="ecdNewsSummary" style="margin:22px 0 0;font:400 15px/1.4 'Graphik','Hanken Grotesk',sans-serif;color:#848484"></div>
+</div>
+</div>
+
+<div style="box-sizing:border-box;max-width:1352px;margin:0 auto;padding:8px 80px 56px;background:#ffffff">
+<div style="max-width:1192px;margin:0 auto">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:52px 40px">
+<span id="ecdNewsItems" style="display:contents"></span>
+</div>
+<span id="ecdNewsEmpty" style="display:contents"></span>
+</div>
+</div>
+
+<div style="position:relative;height:560px;overflow:hidden;background:#2E3230">
+<img loading="lazy" src="/assets/photos/opt/studio-onair-ktla.jpeg" alt="Kelly McKenna during a television interview about school food" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%">
+<div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(32% 30% at 15% 74%,rgba(18,22,28,.86) 0%,rgba(18,22,28,.845) 14%,rgba(18,22,28,.81) 24%,rgba(18,22,28,.755) 33%,rgba(18,22,28,.685) 41%,rgba(18,22,28,.605) 48%,rgba(18,22,28,.52) 55%,rgba(18,22,28,.435) 61%,rgba(18,22,28,.35) 67%,rgba(18,22,28,.272) 72%,rgba(18,22,28,.202) 77%,rgba(18,22,28,.142) 82%,rgba(18,22,28,.094) 86%,rgba(18,22,28,.057) 90%,rgba(18,22,28,.031) 93%,rgba(18,22,28,.014) 96%,rgba(18,22,28,.005) 98%,rgba(18,22,28,0) 100%),radial-gradient(30% 18% at 9% 93%,rgba(18,22,28,.5) 0%,rgba(18,22,28,.3) 42%,rgba(18,22,28,.1) 72%,rgba(18,22,28,0) 100%);pointer-events:none"></div>
+<div style="position:absolute;left:6.5%;bottom:12%;box-sizing:border-box;max-width:470px;width:44%">
+<h2 style="margin:0;font:600 34px/1.14 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:-.024em;color:#ffffff;text-wrap:pretty">Media inquiries</h2>
+<p style="margin:20px 0 0;font:400 17.5px/1.68 'Chronicle Display','Newsreader',Georgia,serif;color:#ffffff;text-wrap:pretty">Looking for expert insight on chronic disease or prevention? Our team is available for interviews, commentary, and background conversations.</p>
+<a href="mailto:info@endchronicdisease.org" style="display:inline-block;margin:26px 0 0;font:700 14px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:#67A081;padding:17px 30px;border-radius:8px;text-decoration:none">Contact our team</a>
+</div>
+</div>
+
+<div style="box-sizing:border-box;max-width:1352px;margin:0 auto;padding:60px 80px 48px;background:#ffffff;border-top:2px solid #DBD6CE">
+<div style="max-width:1192px;margin:0 auto">
+<div class="ecd-footgrid" style="display:grid;grid-template-columns:minmax(0,1.386fr) minmax(0,.7fr) minmax(0,.814fr) minmax(0,1.2fr);column-gap:44px;row-gap:44px;align-items:start">
+<div>
+<img loading="lazy" src="/assets/logo-full-green.png" alt="End Chronic Disease" style="height:52px;width:auto;display:block;margin:-17px 0 0">
+<p style="margin:30px 0 0;font:400 13.5px/1.7 'Graphik','Hanken Grotesk',sans-serif;color:#848484;max-width:280px">End Chronic Disease Institute is a nonpartisan 501(c)(3) nonprofit organization.</p>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:30px 0 0">
+<a href="#2a" aria-label="Instagram" style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:#67A081;color:#ffffff;text-decoration:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
+<a href="#2a" aria-label="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:#67A081;color:#ffffff;text-decoration:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3v-11zm7 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.75-2.75-1.75 0-2.02 1.31-2.02 2.66v5.14h-4v-11z"></path></svg></a>
+<a href="#2a" aria-label="Facebook" style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:#67A081;color:#ffffff;text-decoration:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.63c-.29-.04-1.28-.13-2.44-.13-2.41 0-4.06 1.47-4.06 4.18V9.9H7.5V13h2.7v8h3.3z"></path></svg></a>
+<a href="#2a" aria-label="X" style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:#67A081;color:#ffffff;text-decoration:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3h3.2l-6.99 7.99L22 21h-6.44l-5.04-6.59L4.75 21H1.54l7.48-8.55L2 3h6.6l4.56 6.03L17.53 3z"></path></svg></a>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<div style="font:500 10.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#DBD6CE">Explore</div>
+<a href="/about/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">About</a>
+<a href="/our-work/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Our Work</a>
+<a href="/team/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Team</a>
+<a href="/news/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">News</a>
+<a href="/donate/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Donate</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<div style="font:500 10.5px/1 'Graphik','Hanken Grotesk',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#DBD6CE">Connect</div>
+<a href="/get-involved/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Get Involved</a>
+<a href="/get-involved/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Newsletter</a>
+<a href="/news/" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Media Inquiries</a>
+<a href="mailto:info@endchronicdisease.org" style="font:400 14px/1 'Graphik','Hanken Grotesk',sans-serif;color:#757575;text-decoration:none">Contact</a>
+</div>
+<div style="border:2px dotted #DBD6CE;border-radius:8px;padding:20px 22px;margin-top:-18px">
+<div style="font:400 20px/1 'Coming Soon',cursive;color:#67A081">Get in touch</div>
+<p style="margin:12px 0 0;font:400 14px/1.65 'Graphik','Hanken Grotesk',sans-serif;color:#757575">Questions, media requests, or partnership ideas?</p>
+<a href="mailto:info@endchronicdisease.org" style="display:inline-block;margin:10px 0 0;font:600 14px/1.5 'Graphik','Hanken Grotesk',sans-serif;color:#67A081;text-decoration:none;white-space:nowrap">info@endchronicdisease.org</a>
+</div>
+</div>
+</div>
+</div>
+

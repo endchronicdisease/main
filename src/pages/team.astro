@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../raw/team.body.html?raw';
+import style from '../raw/team.style.css?raw';
+import extra from '../raw/team.extra.css?raw';
+---
+<Base title='Team | End Chronic Disease' description='Meet the team and advisors behind End Chronic Disease.' css={[style, extra]} scripts={["/scripts/team.js"]}>
+  <Fragment set:html={body} />
+</Base>

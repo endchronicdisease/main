@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../raw/donate.body.html?raw';
+import style from '../raw/donate.style.css?raw';
+import extra from '../raw/donate.extra.css?raw';
+---
+<Base title='Donate | End Chronic Disease' description='Support End Chronic Disease Institute, a 501(c)(3) nonprofit. Gifts are tax-deductible.' css={[style, extra]} scripts={["/scripts/donate.js"]}>
+  <Fragment set:html={body} />
+</Base>

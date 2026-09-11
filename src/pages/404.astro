@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../raw/404.body.html?raw';
+import style from '../raw/404.style.css?raw';
+import extra from '../raw/404.extra.css?raw';
+---
+<Base title='Page Not Found | End Chronic Disease' description='The page you were looking for could not be found.' css={[style, extra]} scripts={["/scripts/newsletter.js"]}>
+  <Fragment set:html={body} />
+</Base>

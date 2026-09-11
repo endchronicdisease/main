@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirects from the old Webflow site so search rankings and inbound links survive
+[[redirects]]
+  from = "/coalition"
+  to = "/team/"
+  status = 301
+
+[[redirects]]
+  from = "/take-action"
+  to = "/get-involved/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/get-involved/"
+  status = 301

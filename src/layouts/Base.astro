@@ -1,0 +1,63 @@
+---
+const { title, description, css = [], scripts = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Netlify sets URL to the site's primary address at build time. Until the
+// custom domain is attached that is the netlify.app preview address, and we
+// do not want Google indexing the preview alongside the real site. Once
+// www.endchronicdisease.org is the primary domain in Netlify, the next deploy
+// drops this tag automatically. Local builds (no URL) also get noindex.
+const siteUrl = process.env.URL || '';
+const noindex = !/endchronicdisease\.org/.test(siteUrl);
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+<link rel="icon" type="image/png" href="/assets/logo-full-blue.png" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&family=Coming+Soon&display=swap" rel="stylesheet" />
+{css.map((c) => <style set:html={c}></style>)}
+<!-- Analytics: Google Analytics 4 and HubSpot tracking.
+     Loaded only on the production domain so Netlify previews and local dev
+     do not pollute real traffic data. -->
+<script is:inline>
+  (function () {
+    var host = location.hostname;
+    var isProd = host === 'endchronicdisease.org' || host.endsWith('.endchronicdisease.org');
+    if (!isProd) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-VWQH92XELT');
+
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-VWQH92XELT';
+    document.head.appendChild(ga);
+
+    var hs = document.createElement('script');
+    hs.id = 'hs-script-loader';
+    hs.async = true;
+    hs.defer = true;
+    hs.src = 'https://js-na1.hs-scripts.com/50818861.js';
+    document.head.appendChild(hs);
+  })();
+</script>
+</head>
+<body>
+<slot />
+<script src="/scripts/search.js" defer></script>
+{scripts.map((s) => <script src={s} defer></script>)}
+</body>
+</html>

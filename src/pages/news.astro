@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import body from '../raw/news.body.html?raw';
+import style from '../raw/news.style.css?raw';
+import extra from '../raw/news.extra.css?raw';
+---
+<Base title='News | End Chronic Disease' description='Press coverage, interviews, and commentary from End Chronic Disease.' css={[style, extra]} scripts={["/scripts/news-data.js", "/scripts/news.js"]}>
+  <Fragment set:html={body} />
+</Base>
